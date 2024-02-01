@@ -3,7 +3,7 @@ import "./globals.css";
 import NextUiProvide from "@/provider/NextUiProvide";
 import { ChipsProvider } from "@/context/ChipsContext";
 import { FormProvider } from "@/context/FormContext";
-
+import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         </NextUiProvide>
 
       
-      <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+      <Script src="../path/to/flowbite/dist/flowbite.min.js"></Script>
       </body>
     </html>
   );

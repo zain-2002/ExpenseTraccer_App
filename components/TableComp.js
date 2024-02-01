@@ -49,21 +49,23 @@ useEffect(() => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-const handleRead=(data)=>{
+const handleRead=useCallback((data)=>{
 openModal();
 setModelReadOnly(true);
 setTempData(data)
-}
-const handleEdit=(data)=>{
-  setModelEdit(true)
-  openModal();
-  setTempData(data)
-  }
-  
+},[ setModelReadOnly, setTempData]);
 
-  const handleDelete = (id) => {
-    setTempDelData({ id });
-  };
+
+const handleEdit = useCallback((data) => {
+  setModelEdit(true);
+  openModal();
+  setTempData(data);
+}, [setModelEdit, setTempData]);
+
+const handleDelete = useCallback((id) => {
+  setTempDelData({ id });
+}, [setTempDelData]);
+
   
    
   const renderCell = useCallback((formData, columnKey) => {
@@ -121,7 +123,7 @@ const handleEdit=(data)=>{
       default:
         return cellValue;
     }
-  }, []);
+  }, [handleRead, handleEdit, handleDelete]);
 
   return (
     <div className="flex justify-center">
